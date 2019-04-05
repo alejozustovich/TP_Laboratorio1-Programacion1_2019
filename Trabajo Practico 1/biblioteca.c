@@ -74,22 +74,25 @@ float operacionMultiplicar(float a, float b)
 int operacionFactorial(float a)
 {
     int numero;
+    int resultado;
     numero=(int)a;
     if(numero<0)
     {
-        return 0;
+        resultado=0;
     }
     else
     {
         if(numero==0 || numero==1)
         {
-            return 1;
+            resultado=1;
         }
         else
         {
-            return (numero*operacionFactorial(numero-1));
+            resultado=(numero*operacionFactorial(numero-1));
         }
     }
+
+    return resultado;
 }
 
 void informarSuma(float a, float b, float c)
