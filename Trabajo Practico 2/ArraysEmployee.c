@@ -245,7 +245,7 @@ int modificarEmpleado(eEmpleado listado[], int tamanio)
     return retorno;
 }
 
-void ordenarListadoPorApellido(eEmpleado listado[], int tamanio)
+void ordenarListadoPorApellidoySector(eEmpleado listado[], int tamanio)
 {
     int i, j;
     eEmpleado auxiliar;
@@ -260,24 +260,17 @@ void ordenarListadoPorApellido(eEmpleado listado[], int tamanio)
                 listado[i] = listado[j];
                 listado[j] = auxiliar;
             }
-        }
-    }
-}
-
-void ordenarListadoPorSector(eEmpleado listado[], int tamanio)
-{
-    int i, j;
-    eEmpleado auxiliar;
-
-    for(i=0; i<tamanio; i++)
-    {
-        for(j=0; j<tamanio-1; j++)
-        {
-            if(listado[i].sector < listado[j].sector)
+            else
             {
-                    auxiliar = listado[i];
-                    listado[i] = listado[j];
-                    listado[j] = auxiliar;
+                if(stricmp(listado[i].apellido, listado[j].apellido) == 0)
+                {
+                    if(listado[i].sector < listado[j].sector)
+                    {
+                        auxiliar = listado[i];
+                        listado[i] = listado[j];
+                        listado[j] = auxiliar;
+                    }
+                }
             }
         }
     }
@@ -319,19 +312,15 @@ void informarEmpleados(eEmpleado listado[], int tamanio)
 {
     int opcion;
 
-    opcion = menu("\n1. LISTADO POR APELLIDO.\n2. LISTADO POR SECTOR.\n3. TOTAL Y PROMEDIO DE SALARIOS.\n\nELEGIR OPCION: ");
+    opcion = menu("\n1. LISTADO ORDENADO POR APELLIDO Y SECTOR.\n2. TOTAL Y PROMEDIO DE SALARIOS.\n\nELEGIR OPCION: ");
 
     switch(opcion)
     {
         case 1:
-            ordenarListadoPorApellido(listado, tamanio);
+            ordenarListadoPorApellidoySector(listado, tamanio);
             mostrarListadoEmpleados(listado, tamanio);
             break;
         case 2:
-            ordenarListadoPorSector(listado, tamanio);
-            mostrarListadoEmpleados(listado, tamanio);
-            break;
-        case 3:
             mostrarListadoEmpleados(listado, tamanio);
             informarSalarios(listado, tamanio);
             break;
@@ -342,4 +331,23 @@ void informarEmpleados(eEmpleado listado[], int tamanio)
 
 }
 
+void hardcodearEmpleados(eEmpleado listado[], int tamanio)
+{
+    int id[5] = {1,2,3,4,5};
+    char nombre[5][50] = {"Pablo","Manuela","Jose","Alejandro","Valeria"};
+    char apellido[5][50] = {"Arellano","Hernandez","Ahumada","Romero","Gutierrez"};
+    float salario[5] = {10000,11000,12000,13000,14000};
+    int sector[5] = {12,4,8,2,16};
+    int i;
+
+    for(i=0; i<5; i++)
+    {
+        listado[i].id = id[i];
+        strcpy(listado[i].nombre, nombre[i]);
+        strcpy(listado[i].apellido, apellido[i]);
+        listado[i].salario = salario[i];
+        listado[i].sector = sector[i];
+        listado[i].estado = OCUPADO;
+    }
+}
 

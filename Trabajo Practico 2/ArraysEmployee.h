@@ -99,23 +99,14 @@ int darDeBajaEmpleado(eEmpleado [], int );
  */
 int modificarEmpleado(eEmpleado [], int );
 
-/** \brief ordena el listado de empleados alfabeticamente por apellido.
+/** \brief ordena el listado de empleados alfabeticamente por apellido y por sector.
  *
  * \param [] eEmpleado recibe un array de la estructura empleado.
  * \param int recibe el tamanio del array.
  * \return void
  *
  */
-void ordenarListadoPorApellido(eEmpleado [], int);
-
-/** \brief ordena el listado de empleados por sector de manera ascendente.
- *
- * \param [] eEmpleado recibe un array de la estructura empleado.
- * \param int recibe el tamanio del array.
- * \return void
- *
- */
-void ordenarListadoPorSector(eEmpleado [], int);
+void ordenarListadoPorApellidoySector(eEmpleado [], int);
 
 /** \brief informa el total y el promedio de los salarios, y cantidad de salarios mayores al promedio.
  *
@@ -134,3 +125,12 @@ void informarSalarios(eEmpleado [], int );
  *
  */
 void informarEmpleados(eEmpleado [], int );
+
+/** \brief hardcodea los datos de 5 empleados.
+ *
+ * \param [] eEmpleado recibe un array de la estructura empleado.
+ * \param int recibe el tamanio del array.
+ * \return void
+ *
+ */
+void hardcodearEmpleados(eEmpleado [], int );

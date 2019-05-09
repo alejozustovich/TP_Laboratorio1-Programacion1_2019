@@ -11,6 +11,8 @@ int main()
     eEmpleado empleados[T];
     inicializarListadoEmpleados(empleados,T);
 
+    //hardcodearEmpleados(empleados,T);
+
     do
     {
         opcion = menu("1. ALTA.\n2. BAJA.\n3. MODIFICACION.\n4. INFORMES.\n5. SALIR\n\nELEGIR OPCION: ");
